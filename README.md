@@ -1,1 +1,4 @@
-javascript repetition
+План занятия
+Callback-функции
+Замыкания
+Стрелочные функции
