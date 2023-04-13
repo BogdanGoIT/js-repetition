@@ -555,45 +555,374 @@
 // console.log(bookShelf.getBooks()); // ["Останнє королівство", "Страж снів"]
 
 
-
-
+// function changeEven (numbers, value) {
+//     // Change code below this line
+      
+//       const newArray = [];
   
+//       numbers.forEach(element => {
+//         if (element % 2 === 0) 
+//               newArray.push(element + value);
+//           else
+//             newArray.push(element);
+//     });
   
+//     return newArray;
+      
   
+//   }
+
+/*
 
 
+// Метод filter(callback) використовується для єдиної операції - фільтрації масиву, тобто, коли необхідно вибрати більше одного елемента з колекції за певним критерієм.
 
+масив.filter((element, index, array) => {
+  // Тіло колбек-функції
+});
 
+- Не змінює оригінальний масив.
+- Поелементо перебирає оригінальний масив.
+- Повертає новий масив.
+- Додає у масив, що повертається, елементи, які задовольняють умови колбек-функції.
+- Якщо колбек повернув true, елемент додається у масив, що повертається.
+- Якщо колбек повернув false, елемент не додається у масив, що повертається.
+- Якщо жоден елемент не задовольнив умову, повертає порожній масив.
 
+Тобто метод filter викликає колбек-функцію для кожного елемента вихідного масиву і, якщо результат її виконання - true, додає поточний елемент у новий масив.
 
+Якщо метод filter(callback) використовується для пошуку всіх елементів, що задовольняють умову, то метод find(callback) дозволяє знайти і повернути перший відповідний елемент, після чого перебирання масиву 
+припиняється. Тобто він шукає до першого збігу.
 
+Метод every(callback) перевіряє, чи проходять всі елементи масиву тест колбек-функції. Повертає true або false.
 
+Метод some(callback) перевіряє, чи проходить хоча б один елемент масиву тест колбек-функції. Повертає true або false.
 
+Метод reduce(callback, initialValue) використовується для послідовної обробки кожного елемента масиву із збереженням проміжного результату, як акумулятор.
+
+массив.reduce((previousValue, element, index, array) => {
+  // Тіло колбек-функції
+}, initialValue);
+
+- Не змінює оригінальний масив.
+- Поелементо перебирає оригінальний масив.
+- Повертає все, що завгодно.
+- Робить все, що завгодно.
+
+Метод sort() сортує елементи масиву, але на відміну від інших методів перебирання, він сортує вихідний масив.
+
+// Для зазначення свого порядку сортування методу sort(compareFunction) потрібно передати колбек-функцію з двома параметрами. Це функція порівняння (compare function), порядок сортування залежить від її результату. Метод sort() буде викликати її для двох довільних елементів.
+
+масив.sort((a, b) => {
+    // Callback function body
+  });
   
+a - перший елемент для порівняння.
+b - другий елемент для порівняння.
+
+Якщо виклик compareFunction(a, b) повертає будь-яке від'ємне значення, тобто a менше b, сортування поставить a перед b. Це сортування за зростанням.
+
+const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = [...scores].sort((a, b) => a - b);
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+Якщо виклик compareFunction(a, b) повертає будь-яке додатне значення більше нуля, тобто b більше a, сортування поставить b перед a. Це сортування за спаданням.
+
+const scores = [61, 19, 74, 35, 92, 56];
+const descendingScores = [...scores].sort((a, b) => b - a);
+console.log(descendingScores); // [92, 74, 61, 56, 35, 19]
+
+Якщо виклик compareFunction(a, b) поверне 0, сортування залишить a і b незмінними по відношенню один до одного, але відсортує їх по відношенню до всіх інших елементів. Але взагалі неважливо, що повертати, якщо їх взаємний порядок не має значення.
+
+Для сортування рядків в алфавітному порядку, за зростанням або спаданням, використовується метод рядків localeCompare().
+
+firstString.localeCompare(secondString)
+
+Він викликається на рядку, який потрібно порівняти (firstString) з тим, що був переданий йому як аргумент (secondString).
+
+"a".localeCompare("b"); // -1
+"b".localeCompare("a"); // 1
+"a".localeCompare("a"); // 0
+"b".localeCompare("b"); // 0
+
+- Повертає від'ємне значення, якщо firstString повинен бути перед secondString.
+- Повертає додатне значення більше нуля, якщо firstString повинен бути після secondString.
+- Якщо рядки однакові, повертається нуль.
+
+*/
+
+// Використовуючи метод filter(), можна виконати фільтрацію масиву таким чином, що у ньому залишаться тільки унікальні елементи. Цей прийом працює тільки з масивом примітивних значень - не об'єктів.
+// const students = [
+//     { name: "Mango", courses: ["mathematics", "physics"] },
+//     { name: "Poly", courses: ["science", "mathematics"] },
+//     { name: "Kiwi", courses: ["physics", "biology"] },
+//   ];
+
+//   const allCourses = students.flatMap(student => student.courses);
+//   console.log(allCourses);
+
+//   const uniqueCourses = allCourses.filter(
+//     (course, index, array) => array.indexOf(course) === index
+//   );
+
+//   console.log(uniqueCourses)
+
+// Використовуючи array.indexOf(course), виконуємо пошук першого збігу поточного елемента course і отримуємо його індекс в оригінальному масиві усіх курсів. В параметрі index зберігається індекс поточного елемента course, перебираючи масив методом filter.
+
+// Якщо результат indexOf() і значення index рівні - це унікальний елемент, тому що таке значення зустрічається в масиві вперше, і на поточній ітерації фільтр обробляє саме його.
+
+// # Масив усіх курсів
+// ["mathematics", "physics", "science", "mathematics", "physics", "biology"];
+
+// Для елемента "mathematics" під індексом 0:
+// - indexOf() поверне 0, тому що шукає перший збіг.
+// - Значення параметра index буде 0.
+// - Вони рівні, а отже, це унікальний елемент.
+
+// Для елемента "mathematics" під індексом 3:
+// - indexOf() поверне 0, тому що шукає перший збіг.
+// - Значення параметра index буде 3.
+// - Вони не рівні, а отже, це повторюваний - не унікальний елемент.
+
+// Усі елементи більші або дорівнюють нулю? - так
+[1, 2, 3, 4, 5].every((value) => value >= 0); // true
+
+// Усі елементи більші або дорівнюють нулю? - ні
+[1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false
+
+// Чи є хоча б один елемент, що більший або дорівнює нулю? - так
+[1, 2, 3, 4, 5].some(value => value >= 0); // true
+
+// Чи є хоча б один елемент, що більший або дорівнює нулю? - так
+[-7, -20, 3, -10, -14].some(value => value >= 0); // true
+
+// Чи є хоча б один елемент, що менший нуля? - ні
+[1, 2, 3, 4, 5].some(value => value < 0); // false
+
+// Чи є хоча б один елемент, що менший нуля? - так
+[1, 2, 3, -10, 4, 5].some(value => value < 0); // true
+
+/*
+
+    // Найлегше уявити його роботу на прикладі підрахунку суми елементів масиву.
+    const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+        return previousValue + number;
+    }, 0);
+    
+    console.log(total); // 32
+    Перший параметр колбек-функції (previousValue) - це акумулятор, тобто проміжний результат. Значення, яке поверне колбек-функція на поточній ітерації, буде значенням цього параметра на наступній ітерації.
+
+    Другим аргументом для reduce() можна передати необов'язкове початкове значення акумулятора - параметр initialValue.
+
+    # Спочатку метод reduce() створює внутрішню змінну-акумулятор і
+    # присвоює їй значення параметра initialValue або першого елемента
+    # масиву, що перебирається, якщо initialValue не задане.
+    previousValue = 0
+
+    # Потім колбек-функція викликається для кожного елемента масиву. Поточне значення
+    # параметра previousValue - це те, що повернула колбек-функція на минулій ітерації.
+    Ітерація 1 -> previousValue = 0 -> number = 2 -> return 0 + 2 -> return 2
+    Ітерація 2 -> previousValue = 2 -> number = 7 -> return 2 + 7 -> return 9
+    Ітерація 3 -> previousValue = 9 -> number = 3 -> return 9 + 3 -> return 12
+    Ітерація 4 -> previousValue = 12 -> number = 14 -> return 12 + 14 -> return 26
+    Ітерація 5 -> previousValue = 26 -> number = 6 -> return 26 + 6 -> return 32
+
+    # Після завершення перебирання всього масиву, метод reduce() повертає значення акумулятора.
+    Результат - 32
+
+    Тобто метод reduce() використовується, коли необхідно взяти «багато» і привести до «одного». У повсякденних завданнях його застосування зводиться до роботи з числами.
 
 
+// Change code below this line
+// Change code below this line
+const getTotalBalanceByGender = (users, gender) => [...users]
+  .filter(users => users.gender === gender)
+  .reduce((total, { balance }) => total + balance, 0);
+// Change code above this line
 
 
+*/
 
 
+// Нашому сервісу необхідно розрахувати середній час, проведений в одній грі для кожного гравця, і отримати загальну суму цих значень часу. Розрахувати час для кожного з гравців можна, розділивши його час (властивість playtime) на кількість ігор (властивість gamesPlayed).
+// const players = [
+//     { name: "Mango", playtime: 1270, gamesPlayed: 4 },
+//     { name: "Poly", playtime: 469, gamesPlayed: 2 },
+//     { name: "Ajax", playtime: 690, gamesPlayed: 3 },
+//     { name: "Kiwi", playtime: 241, gamesPlayed: 1 },
+//   ];
+//   // Change code below this line
+  
+//   const totalAveragePlaytimePerGame = players.reduce((previousValue, {playtime, gamesPlayed}) => previousValue + playtime /  gamesPlayed, 0)
+//   console.log(totalAveragePlaytimePerGame) // 1023
+
+//   Ітерація 1 -> previousValue = 0 -> playtime / gamesPlayed -> return 0 + 317,5 -> return 317,5
+//   Ітерація 2 -> previousValue = 317 -> playtime / gamesPlayed -> -> return 317,5 + 234 -> return 552
+//   Ітерація 2 -> previousValue = 552 -> playtime / gamesPlayed -> return 552 + 230 -> return 782
+//   Ітерація 2 -> previousValue = 782 -> playtime / gamesPlayed -> return 782 + 241 -> return 1023
+// # Після завершення перебирання всього масиву, метод reduce() повертає значення акумулятора.
+// Результат - 1023
 
 
+// Через те, що сортується вихідний масив, порушується принцип чистоти функцій і не можна зручно створити декілька похідних колекцій на основі вихідної. Наприклад, створити колекцію, відсортовану за зростанням, а іншу - за спаданням. Тому перед сортуванням роблять повну копію вихідного масиву і сортують вже її.
+// const scores = [61, 19, 74, 35, 92, 56];
+// const ascendingScores = [...scores].sort();
+
+// console.log(scores); // [61, 19, 74, 35, 92, 56]
+// console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
 
 
+// const students = ["Jacob", "Artemis", "Solomon", "Adrian", "Kai", "Ganymede"];
+
+// const inAlphabetOrder = [...students].sort((a, b) => a.localeCompare(b));
+// console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+// const inReversedOrder = [...students].sort((a, b) => b.localeCompare(a));
+// console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+
+// ланцюжок методів
+
+// // Необхідно отримати масив їхніх імен, відсортованих за зростанням балів за тест. З цією метою ми відсортуємо копію масиву методом sort(), після чого методом map() створимо масив значень властивості name з відсортованого масиву.
+// const students = [
+//     { name: "Mango", score: 83, courses: ["mathematics", "physics"] },
+//     { name: "Poly", score: 59, courses: ["science", "mathematics"] },
+//     { name: "Ajax", score: 37, courses: ["physics", "biology"] },
+//     { name: "Kiwi", score: 94, courses: ["literature", "science"] },
+//   ];
+
+//   // 1 Робимо копію вихідного масиву перед сортуванням.
+//   // 2 На копії викликаємо метод sort().
+//   // 3 До результату роботи методу sort() застосовуємо метод map().
+//   // 4 Змінній names присвоюється результат роботи методу map().
+
+//   const studentsName = [...students].sort((a, b) => a.score - b.score).map(student => student.name);
+// console.log(studentsName);
+
+// // Отримаємо масив унікальних відвідуваних предметів, відсортований за алфавітом.
+// // 1 На вихідному масиві викликаємо flatMap() і робимо розгладжений масив усіх курсів.
+// // 2 До результату методу flatMap() застосовуємо метод filter() для фільтрації унікальних елементів.
+// // 3 На результаті методу filter() викликаємо sort().
+// // 4 Змінній uniqueSortedCourses присвоюється результат роботи методу sort().
+
+// const uniqueSortedCourses = students
+//   .flatMap(student => student.courses)
+//   .filter((course, index, array) => array.indexOf(course) === index)
+//   .sort((a, b) => a.localeCompare(b))
+
+//   console.log(uniqueSortedCourses); // ["biology", "science", "literature", "mathematics", "physics"]
+
+//   // Ланцюжок методів може бути довільної довжини, але, зазвичай, не більше 2-3 операцій. По-перше, перебираючі методи використовуються для порівняно простих операцій над колекцією. По-друге, виклик кожного наступного методу - це додаткове перебирання масиву, що за великої кількості, може позначитися на продуктивності.
 
 
+// // Доповни код таким чином, щоб у змінній names вийшов масив імен авторів в алфавітному порядку, рейтинг книг яких більший за значення змінної MIN_BOOK_RATING.
+// const books = [
+//     {
+//       title: "The Last Kingdom",
+//       author: "Bernard Cornwell",
+//       rating: 8.38,
+//     },
+//     {
+//       title: "Beside Still Waters",
+//       author: "Robert Sheckley",
+//       rating: 8.51,
+//     },
+//     {
+//       title: "The Dream of a Ridiculous Man",
+//       author: "Fyodor Dostoevsky",
+//       rating: 7.75,
+//     },
+//     { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+//     {
+//       title: "The Dreams in the Witch House",
+//       author: "Howard Lovecraft",
+//       rating: 8.67,
+//     },
+//   ];
+//   const MIN_BOOK_RATING = 8;
+//   // Change code below this line
+  
+//   const names = books
+//   .filter(book => book.rating > MIN_BOOK_RATING)
+//   .map(book => book.author)
+//   .sort((a, b) => a.localeCompare(b))
+
+//   console.log(names)
 
 
+// // Доповни функцію getNamesSortedByFriendCount(users) таким чином, щоб вона повертала масив імен користувачів, відсортований за зростанням кількості їхніх друзів (властивість friends).
+// const getNamesSortedByFriendCount = users => [...users]
+//     .sort((a, b) => a.friends.length - b.friends.length)
+//     .map(user => user.name)
 
 
+// Доповни функцію getTotalBalanceByGender(users, gender) таким чином, щоб вона повертала загальний баланс користувачів (властивість balance), стать яких (властивість gender) збігається зі значенням параметра gender.
+const getTotalBalanceByGender = (users, gender) => users
+  .filter(users => users.gender === gender)
+  .reduce((total, { balance }) => total + balance, 0);
 
-
-
-
-
-
-
-
-
-
-
+console.log(
+    getTotalBalanceByGender([
+        {
+          name: "Moore Hensley",
+          email: "moorehensley@indexia.com",
+          eyeColor: "blue",
+          friends: ["Sharron Pace"],
+          isActive: false,
+          balance: 2811,
+          gender: "male"
+        },
+        {
+          name: "Sharlene Bush",
+          email: "sharlenebush@tubesys.com",
+          eyeColor: "blue",
+          friends: ["Briana Decker", "Sharron Pace"],
+          isActive: true,
+          balance: 3821,
+          gender: "female"
+        },
+        {
+          name: "Ross Vazquez",
+          email: "rossvazquez@xinware.com",
+          eyeColor: "green",
+          friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+          isActive: false,
+          balance: 3793,
+          gender: "male"
+        },
+        {
+          name: "Elma Head",
+          email: "elmahead@omatom.com",
+          eyeColor: "green",
+          friends: ["Goldie Gentry", "Aisha Tran"],
+          isActive: true,
+          balance: 2278,
+          gender: "female"
+        },
+        {
+          name: "Carey Barr",
+          email: "careybarr@nurali.com",
+          eyeColor: "blue",
+          friends: ["Jordan Sampson", "Eddie Strong", "Adrian Cross"],
+          isActive: true,
+          balance: 3951,
+          gender: "male"
+        },
+        {
+          name: "Blackburn Dotson",
+          email: "blackburndotson@furnigeer.com",
+          eyeColor: "brown",
+          friends: ["Jacklyn Lucas", "Linda Chapman", "Adrian Cross", "Solomon Fokes"],
+          isActive: false,
+          balance: 1498,
+          gender: "male"
+        },
+        {
+          name: "Sheree Anthony",
+          email: "shereeanthony@kog.com",
+          eyeColor: "brown",
+          friends: ["Goldie Gentry", "Briana Decker"],
+          isActive: true,
+          balance: 2764,
+          gender: "female"
+        }
+      ], "male"))
