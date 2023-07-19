@@ -4,6 +4,7 @@
  * - событие загрузки изображения
  */
 
+
 const lazyImages = document.querySelectorAll('img[loading="lazy"]');
 
 console.log(lazyImages);
