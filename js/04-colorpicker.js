@@ -14,87 +14,88 @@ const colors = [
     { hex: '#607d8b', rgb: '96,125,139' },
   ];
 
-  const paletteContainer = document.querySelector(".js-palette");
-  const cardsMarkup = createColorCardsMarkup(colors);
 
-  // appendChild - это когда через createElement что то создаете, тойсть обькты вешаете
+  // const paletteContainer = document.querySelector(".js-palette");
+  // const cardsMarkup = createColorCardsMarkup(colors);
+
+  // // appendChild - это когда через createElement что то создаете, тойсть обькты вешаете
   
-  // insertAdjacentHTML - если вы хотите создать одну огромную строку и сказать браузеру, сам разберись, распарси и создай элименты
-  paletteContainer.insertAdjacentHTML('beforeend', cardsMarkup);
+  // // insertAdjacentHTML - если вы хотите создать одну огромную строку и сказать браузеру, сам разберись, распарси и создай элименты
+  // paletteContainer.insertAdjacentHTML('beforeend', cardsMarkup);
 
-  // 2 повесили делегирование на контейнер
-  paletteContainer.addEventListener('click', onPaletteContainerClick)
-
-
-  // 1 создали ф-кцию которая рендерит всю нашу разметку
-  function createColorCardsMarkup(colors){
-   return colors.map(({ hex, rgb }) => {
-    return `
-    <div class="color-card">
-     <div><div><div> <div
-     class="color-swatch"
-     data-hex="${hex}"
-     data-rgb="${rgb}"
-     style="background-color: ${hex}"
-   ></div></div></div></div>
-      <div class="color-meta">
-        <p>HEX: ${hex}</p>
-        <p>RGB: ${rgb}</p>
-      </div>
-    </div>
-    `;
-    })
-    .join('');
-
-  }
+  // // 2 повесили делегирование на контейнер
+  // paletteContainer.addEventListener('click', onPaletteContainerClick)
 
 
-  // 3 проверка куда мы клацнули, 3-й шаг мы начали снимать классы, добавлять классы...
-  function onPaletteContainerClick(evt){
+  // // 1 создали ф-кцию которая рендерит всю нашу разметку
+  // function createColorCardsMarkup(colors){
+  //  return colors.map(({ hex, rgb }) => {
+  //   return `
+  //   <div class="color-card">
+  //    <div><div><div> <div
+  //    class="color-swatch"
+  //    data-hex="${hex}"
+  //    data-rgb="${rgb}"
+  //    style="background-color: ${hex}"
+  //  ></div></div></div></div>
+  //     <div class="color-meta">
+  //       <p>HEX: ${hex}</p>
+  //       <p>RGB: ${rgb}</p>
+  //     </div>
+  //   </div>
+  //   `;
+  //   })
+  //   .join('');
 
-    // contains - а есть ли у этого элимента класс color-swatch
-    const isColorSwatchEl = evt.target.classList.contains('color-swatch')
-
-    // если это не элимент color-swatch 
-    if(!isColorSwatchEl){
-        return;
-    }
-
-    const swatchEl = evt.target;
-
-    // parentNode - хранит радителя элимента swatchEl
-    // const parentColorCard = swatchEl.parentNode;
-    // parentColorCard.classList.add('is-active')
-
-    // убрать активный класс
-    removeActiveCardClass();
-
-    // closest - ближайший (на верх) элимент с таким селектором
-    const parentColorCard = swatchEl.closest('.color-card');
-
-    // добавить активный класс
-    addActiveCardClass(parentColorCard)
-
-    // возьми атрибут data-hex
-    setBodyBgColor(evt.target.dataset.hex);
-
-  }
+  // }
 
 
-  function setBodyBgColor(color){
-    document.body.style.backgroundColor = color;
-  }
+  // // 3 проверка куда мы клацнули, 3-й шаг мы начали снимать классы, добавлять классы...
+  // function onPaletteContainerClick(evt){
+
+  //   // contains - а есть ли у этого элимента класс color-swatch
+  //   const isColorSwatchEl = evt.target.classList.contains('color-swatch')
+
+  //   // если это не элимент color-swatch 
+  //   if(!isColorSwatchEl){
+  //       return;
+  //   }
+
+  //   const swatchEl = evt.target;
+
+  //   // parentNode - хранит радителя элимента swatchEl
+  //   // const parentColorCard = swatchEl.parentNode;
+  //   // parentColorCard.classList.add('is-active')
+
+  //   // убрать активный класс
+  //   removeActiveCardClass();
+
+  //   // closest - ближайший (на верх) элимент с таким селектором
+  //   const parentColorCard = swatchEl.closest('.color-card');
+
+  //   // добавить активный класс
+  //   addActiveCardClass(parentColorCard)
+
+  //   // возьми атрибут data-hex
+  //   setBodyBgColor(evt.target.dataset.hex);
+
+  // }
 
 
-  function removeActiveCardClass(){
-    // 1 нужно найти текущую активную карточку
-    const currentActiveCard = document.querySelector('.color-card.is-active');
-    if(currentActiveCard){
-            currentActiveCard.classList.remove('is-active')
-    }
-  }
+  // function setBodyBgColor(color){
+  //   document.body.style.backgroundColor = color;
+  // }
 
 
-  function addActiveCardClass(card){
-    card.classList.add('is-active')
-  }
+  // function removeActiveCardClass(){
+  //   // 1 нужно найти текущую активную карточку
+  //   const currentActiveCard = document.querySelector('.color-card.is-active');
+  //   if(currentActiveCard){
+  //           currentActiveCard.classList.remove('is-active')
+  //   }
+  // }
+
+
+  // function addActiveCardClass(card){
+  //   card.classList.add('is-active')
+  // }

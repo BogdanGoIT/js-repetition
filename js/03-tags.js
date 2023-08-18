@@ -4,6 +4,54 @@
  * - несколько из многих и Set
  */
 
+
+const tagsContainer = document.querySelector('.js-tags');
+let selectedTag = new Set();
+
+tagsContainer.addEventListener('click', evt => {
+   if(evt.target.nodeName != "BUTTON"){
+    return
+   }
+   const btn = evt.target;
+   const tag = btn.dataset.value;
+   const isActiveBtn = btn.classList.contains("tags__btn--active");
+   console.log(isActiveBtn)
+
+   if(isActiveBtn){
+    selectedTag.delete(tag)
+   }else{
+    selectedTag.add(tag)
+   }
+
+   btn.classList.toggle("tags__btn--active")
+
+   console.log(selectedTag)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const tagsContainer = document.querySelector('.js-tags');
 // let selectedTag = null;
 
@@ -34,42 +82,42 @@
 // }
 
 
-const tagsContainer = document.querySelector('.js-tags');
-const selectedTags = new Set();
+// const tagsContainer = document.querySelector('.js-tags');
+// const selectedTags = new Set();
 
-// добавить уникальные значения, работает только с примитивами
-// selectedTags.add(5);
-// selectedTags.add(5);
-// selectedTags.add(5);
+// // добавить уникальные значения, работает только с примитивами
+// // selectedTags.add(5);
+// // selectedTags.add(5);
+// // selectedTags.add(5);
 
-// selectedTags.add(4);
-// selectedTags.add(4);
+// // selectedTags.add(4);
+// // selectedTags.add(4);
 
-tagsContainer.addEventListener('click', onTagsContainerClick);
+// tagsContainer.addEventListener('click', onTagsContainerClick);
 
-function onTagsContainerClick(evt){
-    if(evt.target.nodeName !== "BUTTON"){
-        return;
-    }
+// function onTagsContainerClick(evt){
+//     if(evt.target.nodeName !== "BUTTON"){
+//         return;
+//     }
 
-    const btn = evt.target;
-    const tag = btn.dataset.value;
+//     const btn = evt.target;
+//     const tag = btn.dataset.value;
 
-    // contains - есть ли класс tags__btn--active ?
-    const isActive = btn.classList.contains('tags__btn--active');
+//     // contains - есть ли класс tags__btn--active ?
+//     const isActive = btn.classList.contains('tags__btn--active');
 
-    if(isActive){
-        // если на текущем элименте уже есть класс active то удали из сета тег на который мы кликнули ?
-        selectedTags.delete(tag)
-    }else{
-        // если нет класса active (он не активный) добавить в сет тег на который мы кликнули  
-        selectedTags.add(tag)
-    }
+//     if(isActive){
+//         // если на текущем элименте уже есть класс active то удали из сета тег на который мы кликнули ?
+//         selectedTags.delete(tag)
+//     }else{
+//         // если нет класса active (он не активный) добавить в сет тег на который мы кликнули  
+//         selectedTags.add(tag)
+//     }
 
-    btn.classList.toggle('tags__btn--active')
-    console.log(selectedTags)
+//     btn.classList.toggle('tags__btn--active')
+//     console.log(selectedTags)
     
-}
+// }
 
 
 
