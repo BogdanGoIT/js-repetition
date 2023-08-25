@@ -12,7 +12,7 @@ let mouseMoveCbInvocationCounter = 0;
 
 // _.throttle - возвращает ф-цию раз в 500ms(тротл - затормозить)
 
-// window.addEventListener('mousemove', _.throttle(onMouseMove, 500))
+// window.addEventListener('mousemove',  _.throttle(onMouseMove, 500))
 
 function onMouseMove(event) {
     mouseMoveCbInvocationCounter += 1;
@@ -35,7 +35,7 @@ let inputCbInvocationCounter = 0;
 
 // _.debounce - вызови ф-цию тогда, когда прикратится поток событий на 2000ms
 
-inputRef.addEventListener('input', _.debounce(onInputChange, 2000));
+inputRef.addEventListener('input', _.debounce(onInputChange, 200));
 
 function onInputChange(event) {
     inputCbInvocationCounter += 1;
