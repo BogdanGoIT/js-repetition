@@ -14,7 +14,7 @@ javascript repetition
     - создание файлов (touch)
     - создание папок (mkdir)
     - переименование/перемещение (mv)
-    - удаление (rm)
+    - удаление (rm) -rf
 - Node.js и npm
   - установка
   - инициализация и package.json
